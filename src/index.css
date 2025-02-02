@@ -11,6 +11,7 @@
   --color-secondary: #000;
   --color-white: #fff;
   --color-red: #ff0000;
+  --color-gray: #555555;
   --font-primary: "Poppins", "arial";
 }
 /* Nav Area */
@@ -36,6 +37,9 @@
   justify-content: center;
   gap: 40px;
 }
+.nav-area nav ul a:hover {
+  color: var(--color-primary);
+}
 .nav-area nav ul a {
   text-decoration: none;
   color: var(--color-secondary);
@@ -43,6 +47,7 @@
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 0.63px;
+  transition: all 0.4s ease;
 }
 .nav-button-area {
   display: flex;
@@ -63,6 +68,9 @@
   text-decoration: none;
   transition: all 0.4s ease;
   display: inline-block;
+}
+.btn-primary.delete {
+  background: rgb(202, 46, 46);
 }
 .btn-primary:hover {
   background: var(--color-white);
@@ -191,4 +199,259 @@
 /* Section gap */
 .section-gap-100 {
   margin: 100px 0;
+}
+.section-gap-bottom-100 {
+  margin-bottom: 100px;
+}
+
+/* Footer */
+.footer {
+  background: #f8f8f8;
+  padding: 80px 0;
+}
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+.footer .footer-logo a img {
+  width: 60px;
+  height: 60px;
+  /* width: 100%; */
+}
+.footer ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.footer ul li a {
+  color: var(--color-secondary);
+  font-family: var(--font-primary);
+  font-size: 21px;
+  font-weight: 400;
+  letter-spacing: 0.63px;
+  text-decoration: none;
+}
+.copy-right {
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.63px;
+  text-align: center;
+  background: #545454;
+  padding: 26px 0;
+}
+.copy-right span {
+  color: var(--color-primary);
+}
+/* Footer Social Link */
+.footer-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  gap: 10px;
+}
+.footer-social a {
+  font-size: 32px;
+  color: var(--color-secondary);
+  transition: all 0.4s ease;
+}
+.footer-social a:hover {
+  color: var(--color-primary);
+}
+/* testimonial card */
+.testimonial-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #f8f8f8;
+  padding: 55px;
+  border-radius: 14px;
+  flex-wrap: wrap;
+}
+.testimonial-img img {
+  width: 160px;
+  height: 160px;
+}
+.testimonial-content-wrap .para {
+  color: #424242;
+  font-family: var(--font-primary);
+  margin-bottom: 15px;
+}
+.testimonial-content-wrap .title {
+  margin-bottom: 5px;
+}
+
+.testimonial-content-wrap .sub-title {
+  color: #424242;
+  font-family: var(--font-primary);
+}
+
+/* Breadcum Area */
+.breadcum-area {
+  background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20240408/pngtree-colored-pens-pencils-markers-on-shelf-in-stationery-shop-image_15651334.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 120px 0;
+  position: relative;
+  z-index: 1;
+}
+.breadcum-area::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* background: red; */
+  background: linear-gradient(180deg, rgb(88 26 27 / 11%) 0%, #353c5b 100%);
+  z-index: -1;
+}
+.breadcum-content-wrap .breadcum-title {
+  text-align: center;
+  font-size: 68px;
+  line-height: 78px;
+  color: var(--color-white);
+  font-family: var(--font-primary);
+}
+.breadcum-content-wrap ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-family: var(--font-primary);
+}
+.breadcum-content-wrap ul li {
+  font-size: 22px;
+  color: white;
+}
+.breadcum-content-wrap ul li a {
+  color: var(--color-white);
+  transition: all 0.4s ease;
+}
+.breadcum-content-wrap ul li a:hover {
+  color: var(--color-primary);
+}
+
+/* Section title two */
+.section-title-style-two .sub-title {
+  color: var(--color-primary);
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+}
+.section-title-style-two .title {
+  color: var(--color-secondary);
+  font-family: var(--font-primary);
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 59px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+.section-title-style-two .para {
+  color: #74787c;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+/* About page */
+.about-inner-image img {
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.form-style {
+  background: "red" !important;
+  padding: "40px";
+}
+
+.product-card-wrap img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  margin-bottom: 30px;
+}
+.product-card-wrap {
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 11px 0px rgba(2, 2, 2, 0.11);
+}
+.product-card-wrap .para {
+  margin-top: 10px;
+  font-size: 22px;
+  font-weight: 600;
+}
+.product-card-wrap .para-two {
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: 500;
+}
+.product-details-image img {
+  width: 100%;
+}
+.star-icons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #fd6f00;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+.details-content-wrap {
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 11px 0px rgba(2, 2, 2, 0.11);
+}
+.details-content-wrap .title {
+  font-size: 34px;
+  line-height: 44px;
+  margin-bottom: 12px;
+  font-family: var(--font-primary);
+}
+.details-content-wrap .category {
+  font-size: 18px;
+  line-height: 28px;
+  margin-bottom: 12px;
+  color: var(--color-gray);
+  font-family: var(--font-primary);
+}
+.details-content-wrap .price {
+  font-size: 25px;
+  line-height: 35px;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  /* color: var(--color-gray); */
+  margin-bottom: 7px;
+}
+.details-content-wrap .desc {
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--color-gray);
+  font-family: var(--font-primary);
+}
+.details-content-wrap .quantity {
+  font-size: 18px;
+  line-height: 28px;
+  font-family: var(--font-primary);
+  margin-top: 15px;
+  margin-bottom: 15px;
 }

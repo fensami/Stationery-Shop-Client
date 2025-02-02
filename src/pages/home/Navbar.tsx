@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { logout } from "../../redux/features/auth/authSlice";
 
 const Navbar = () => {
+  const user = useAppSelector((state) => state.auth.user); // Get user from Redux
+  const dispatch = useAppDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <>
       <div className="nav-area-wrapper">
@@ -18,13 +26,13 @@ const Navbar = () => {
                   <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to="/">About</Link>
+                  <Link to="/about">About</Link>
                 </li>
                 <li>
                   <Link to="/">Contact</Link>
                 </li>
                 <li>
-                  <Link to="/">Project</Link>
+                  <Link to="/productPage">Products</Link>
                 </li>
                 <li>
                   <Link to="/">Contact</Link>
@@ -32,12 +40,37 @@ const Navbar = () => {
               </ul>
             </nav>
             <div className="nav-button-area">
-              <Link className="btn-primary" to="/">
+              {user ? (
+                <>
+                  <button onClick={handleLogout} className="btn-primary">
+                    Logout
+                  </button>
+                  {/* Cart Button (Only show when logged in) */}
+                  <Link className="btn-primary" to="/cart">
+                    Cart
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link className="btn-primary" to="/login">
+                    Login
+                  </Link>
+                  <Link className="btn-primary" to="/signup">
+                    Signup
+                  </Link>
+                </>
+              )}
+              {/* <Link className="btn-primary" to="/login">
                 login
               </Link>
-              <Link className="btn-primary" to="/">
+
+              <button onClick={handleLogout} className="btn-primary">
+                logout
+              </button>
+
+              <Link className="btn-primary" to="/signup">
                 signup
-              </Link>
+              </Link> */}
               {/* when Login Then showing Cart option */}
               {/* <Link className="btn-primary" to="/">
                 Cart
