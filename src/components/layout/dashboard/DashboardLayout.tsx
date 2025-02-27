@@ -33,7 +33,7 @@ const DashboardLayout = () => {
   } = theme.useToken();
   return (
     <div>
-      <Layout>
+      <Layout style={{ height: "100vh !important" }}>
         <Sider
           breakpoint="lg"
           collapsedWidth="0"
@@ -55,7 +55,7 @@ const DashboardLayout = () => {
         <Layout>
           <Header style={{ padding: 0, background: colorBgContainer }}>
             <Link to="/" className="btn-primary">
-              GO Back TO Home Page
+              GO TO Home Page
             </Link>
           </Header>
           <Content style={{ margin: "24px 16px 0" }}>

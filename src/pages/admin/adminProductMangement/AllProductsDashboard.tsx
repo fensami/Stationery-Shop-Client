@@ -7,18 +7,17 @@ import { toast } from "sonner";
 const AllProductsDashboard = () => {
   const { data: products } = useGetAllProductsQuery(undefined);
   const [deleteProduct] = useDeleteProductMutation(undefined);
+
   const handleDelete = async (productId: string) => {
     const toastId = toast.loading("Creating...");
     try {
       await deleteProduct(productId).unwrap();
-      // Optionally, show a success message or refetch products
       toast.success("product Deleted Success !", { id: toastId });
     } catch (error) {
       console.error("Error deleting product:", error);
       toast.error("Error deleting product:", { id: toastId });
     }
   };
-
   return (
     <div>
       <div className="product-card-area">
@@ -33,8 +32,11 @@ const AllProductsDashboard = () => {
                   />
                 </div>
                 <h2 className="title">{product.name}</h2>
-                <p className="para">{product.price}</p>
+                <p className="para">${product.price}</p>
                 <p className="para-two">{product.category}</p>
+                <p className="para" style={{ marginTop: "0" }}>
+                  Quantity: {product.quantity}
+                </p>
                 <div style={{ display: "flex", gap: "10px" }}>
                   <Link
                     className="btn-primary"

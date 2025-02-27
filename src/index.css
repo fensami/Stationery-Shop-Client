@@ -69,6 +69,22 @@
   transition: all 0.4s ease;
   display: inline-block;
 }
+.btn-primary.shipped {
+  background: green;
+}
+.shipped {
+  background: green;
+  color: white;
+  padding: 5px 10px;
+  font-size: 22px;
+  line-height: 32px;
+  border-radius: 6px;
+  display: inline-block;
+}
+.btn-primary.shipped:hover {
+  /* display: inherit; */
+  background: inherit;
+}
 .btn-primary.delete {
   background: rgb(202, 46, 46);
 }

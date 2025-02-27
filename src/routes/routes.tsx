@@ -15,6 +15,8 @@ import ProtectedRoutes from "../lib/ProtectedRoutes";
 import { routeGenerator } from "../utils/routeGeneretor";
 import { adminPaths } from "./admin.routes";
 import ProductPage from "../pages/products/ProductPage";
+import { userPaths } from "./user.routes";
+import CartPage from "../pages/products/CartPage";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +28,7 @@ const router = createBrowserRouter([
       { path: "login", element: <Login></Login> },
       { path: "signup", element: <SignUp></SignUp> },
       { path: "productPage", element: <ProductPage></ProductPage> },
-      // { path: "create-stationery", element: <CreateStationeryProduct /> },
+      { path: "cart", element: <CartPage></CartPage> },
       {
         path: "/productDetails/:id",
         element: <ProductDetails></ProductDetails>,
@@ -42,15 +44,15 @@ const router = createBrowserRouter([
     ),
     children: routeGenerator(adminPaths),
   },
-  // {
-  //   path: "/user",
-  //   element: (
-  //     <ProtectedRoutes role="user">
-  //       <DashboardLayout></DashboardLayout>
-  //     </ProtectedRoutes>
-  //   ),
-  //   children: routeGenerator(userPaths),
-  // },
+  {
+    path: "/user",
+    element: (
+      <ProtectedRoutes role="user">
+        <DashboardLayout></DashboardLayout>
+      </ProtectedRoutes>
+    ),
+    children: routeGenerator(userPaths),
+  },
 
   // {
   //   path: "/admin",

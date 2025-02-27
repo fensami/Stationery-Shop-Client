@@ -1,3 +1,4 @@
+import MyOrders from "../pages/products/MyOrders";
 import UserDashboard from "../pages/user/UserDashboard";
 
 export const userPaths = [
@@ -7,13 +8,8 @@ export const userPaths = [
     element: <UserDashboard />,
   },
   {
-    name: "User Management",
-    children: [
-      {
-        name: "Create A. Semester",
-        path: "create-academic-semester",
-        // element: <CreateStationeryProduct />,
-      },
-    ],
+    name: "My Orders",
+    path: "my-orders",
+    element: <MyOrders />,
   },
 ];

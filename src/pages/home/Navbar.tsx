@@ -3,7 +3,30 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { logout } from "../../redux/features/auth/authSlice";
 
 const Navbar = () => {
+  // const user = useAppSelector(selectCurrentUser);
+  // const user = useAppSelector(selectCurrentUser);
+  // console.log(user?.role);
+
   const user = useAppSelector((state) => state.auth.user); // Get user from Redux
+
+  let userRole: string; // Declare a new variable for the role string
+
+  if (user && user.role) {
+    switch (user.role) {
+      case "admin":
+        userRole = "admin";
+        break;
+      case "user":
+        userRole = "user";
+        break;
+      default:
+        userRole = "undefined"; // Or handle the default case appropriately
+        break;
+    }
+  } else {
+    userRole = "unknown"; // Handle null/undefined user or missing role
+  }
+
   const dispatch = useAppDispatch();
   const handleLogout = () => {
     dispatch(logout());
@@ -48,6 +71,9 @@ const Navbar = () => {
                   {/* Cart Button (Only show when logged in) */}
                   <Link className="btn-primary" to="/cart">
                     Cart
+                  </Link>
+                  <Link className="btn-primary" to={`/${userRole}/dashboard`}>
+                    Dashboard
                   </Link>
                 </>
               ) : (

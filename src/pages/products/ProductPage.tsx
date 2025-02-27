@@ -1,18 +1,33 @@
-import { Col, Row } from "antd";
+import { Col, Row, Input } from "antd";
 import { Link } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../redux/features/product/all-product.api";
 import Breadcum from "../home/inner-page-components/Breadcum";
+import { useState, useMemo } from "react";
 
 const ProductPage = () => {
-  const { data: products } = useGetAllProductsQuery(undefined);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const queryParams = useMemo(() => {
+    if (!searchTerm) {
+      return [];
+    }
+    return [{ name: "searchTerm", value: searchTerm }];
+  }, [searchTerm]);
+
+  const { data: products } = useGetAllProductsQuery(queryParams);
+
   return (
     <>
       <Breadcum title="All Products" breadcrumbs="All Products" />
       <div className="section-gap-100">
         <div className="container">
+          <Input
+            placeholder="Search products..."
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{ marginBottom: "20px" }}
+          />
           <div className="product-card-area">
             <Row gutter={[24, 24]}>
-              {/* Remainder After Using Index method */}
               {products?.data?.map((product, index) => (
                 <Col lg={{ span: 8 }} key={index}>
                   <div className="product-card-wrap">
@@ -31,8 +46,6 @@ const ProductPage = () => {
                     >
                       Product details
                     </Link>
-
-                    {/* <Link to="/productDetails">Product details</Link> */}
                   </div>
                 </Col>
               ))}

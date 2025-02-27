@@ -1,13 +1,53 @@
-import { Link, useParams } from "react-router-dom";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetSingleProductQuery } from "../../redux/features/product/all-product.api";
 import { Col, Row } from "antd";
 import Breadcum from "../home/inner-page-components/Breadcum";
 import { FaStar } from "react-icons/fa";
+import { useCreateOrderProductMutation } from "../../redux/features/orders/ordersManagement.api";
+import { toast } from "sonner";
+import { useAppSelector } from "../../redux/hooks";
 
 const ProductDetails = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
-  // const { data: product, isFetching } = useGetSingleProductQuery(id);
   const { data: product } = useGetSingleProductQuery(id);
+
+  const user = useAppSelector((state: any) => state.auth.user);
+
+  const [createOrderProduct] = useCreateOrderProductMutation();
+
+  const handleAddToCart = async () => {
+    if (!user) {
+      return toast.error("Please log in to place an order");
+    }
+
+    if (
+      !product?.data?._id ||
+      !product?.data?.quantity ||
+      product?.data?.quantity <= 0
+    ) {
+      return toast.error("Product unavailable or out of stock.");
+    }
+
+    const toastId = toast.loading("Adding to cart...");
+
+    try {
+      const orderData = { product: product.data._id, quantity: 1 }; // Assuming quantity is 1
+      const response = await createOrderProduct(orderData);
+      console.log(response);
+      // if ("error" in response) {
+      //   throw new Error(
+      //     response?.error?.data?.message || "Failed to add to cart"
+      //   );
+      // }
+      navigate("/cart");
+
+      toast.success("Added to cart successfully!", { id: toastId });
+    } catch (err: any) {
+      toast.error(err.message || "Something went wrong", { id: toastId });
+    }
+  };
 
   return (
     <>
@@ -49,12 +89,17 @@ const ProductDetails = () => {
                   Description : {product?.data?.description}
                 </p>
                 <h5 className="quantity">
-                  Quantity : {product?.data?.quantity}
+                  {product?.data?.quantity > 0 ? (
+                    `Quantity : ${product?.data?.quantity}`
+                  ) : (
+                    <span style={{ color: "red" }}>Stock Out</span>
+                  )}
                 </h5>
+
                 <p>{product?.data?.inStock}</p>
-                <Link to="/" className="btn-primary">
+                <button className="btn-primary" onClick={handleAddToCart}>
                   Add To Cart
-                </Link>
+                </button>
               </div>
             </Col>
           </Row>

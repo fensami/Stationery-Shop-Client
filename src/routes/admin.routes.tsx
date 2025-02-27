@@ -1,6 +1,8 @@
 // import AdminDashboard from "../pages/admin/AdminDashboard";
 import AdminDashboard from "../pages/admin/AdminDashboard";
+import AllOrders from "../pages/admin/adminProductMangement/AllOrders";
 import AllProductsDashboard from "../pages/admin/adminProductMangement/AllProductsDashboard";
+// import AllProductsDashboard from "../pages/admin/adminProductMangement/AllProductsDashboard";
 import UpdateProduct from "../pages/admin/adminProductMangement/UpdateProduct";
 import CreateStationeryProduct from "../pages/products/CreateStationeryProduct";
 // import { NavLink } from "react-router-dom";
@@ -31,12 +33,18 @@ export const adminPaths = [
       {
         name: "Products",
         path: "stationery-all-product",
+        // element: <AllProductsDashboard />,
         element: <AllProductsDashboard />,
       },
       {
         name: "update-products",
         path: "update-product/:id",
         element: <UpdateProduct />,
+      },
+      {
+        name: "All Orders",
+        path: "all-orders",
+        element: <AllOrders />,
       },
     ],
   },
